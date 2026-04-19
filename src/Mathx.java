@@ -131,3 +131,8 @@ public class Mathx {
     }
     public static native double stdDev(double[] values);
 }
+class Test{
+    public static void main(String[] args) {
+        System.out.println("Welcome to Mathx Library!");
+    }
+}
