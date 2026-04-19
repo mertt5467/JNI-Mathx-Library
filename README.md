@@ -1,18 +1,18 @@
-## Getting Started
+# Java Mathx Library
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+**EN:** This library provides a set of mathematical functions implemented in **C++ native** code using **JNI (Java Native Interface)**. It focuses on custom implementations of algorithms like Taylor series and Newton-Raphson for high-performance calculations.
 
-## Folder Structure
+**TR:** Bu kütüphane, **JNI (Java Native Interface)** aracılığıyla **C++ native** kod kullanılarak geliştirilmiş matematiksel fonksiyonlar sunar. Taylor serisi ve Newton-Raphson gibi algoritmaların performanslı özel uygulamalarına odaklanır.
 
-The workspace contains two folders by default, where:
+---
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+## Derleme / Compilation
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+```bash
+# C++ (Linux)
+g++ -shared -fPIC -I"$JAVA_HOME/include" -I"$JAVA_HOME/include/linux" Mathx.cpp -o libmathx.so
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+# Java
+javac Mathx.java
+javac App.java
+java -Djava.library.path=. App
