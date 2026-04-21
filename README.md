@@ -14,5 +14,4 @@ g++ -shared -fPIC -I"$JAVA_HOME/include" -I"$JAVA_HOME/include/linux" Mathx.cpp 
 
 # Java
 javac Mathx.java
-javac App.java
-java -Djava.library.path=. App
+java -Djava.library.path=. Test
