@@ -9,10 +9,5 @@
 ## Derleme / Compilation
 
 ```bash
-# C++ (Linux)
-g++ -shared -fPIC -I"$JAVA_HOME/include" -I"$JAVA_HOME/include/linux" Mathx.cpp -o libmathx.so
-
-# Java
-javac Mathx.java
-javac App.java
-java -Djava.library.path=. App
+#(Terminal)
+./src/run.sh
