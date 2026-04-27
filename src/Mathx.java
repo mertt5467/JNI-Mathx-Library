@@ -1,7 +1,9 @@
-public class Mathx {
-
+public final class Mathx {
     static{
-        System.loadLibrary("mathx");
+        loadNativeLibrary();
+    }
+    private Mathx() {
+        // Private constructor to prevent instantiation
     }
 
     public static final double Euler = 2.7182818284590455;
@@ -68,7 +70,21 @@ public class Mathx {
         return (a < 0) ? -a : a;
     }
 
-    public static native double power(double base, int exponent);
+    public static double power(double base, int exponent) {
+        double result = 1.0;
+        if (exponent == 0) {
+            return 1;
+        } else if (exponent < 0) {
+            for (int i = 0; i > exponent; i--) {
+                result /= base;
+            }
+        } else {
+            for (int i = 0; i < exponent; i++) {
+                result *= base;
+            }
+        }
+        return result;
+    }
 
     public static native double factorial(int n);
 
@@ -77,46 +93,6 @@ public class Mathx {
     public static native double pi(int n);
 
     public static native double sqrt(double s);
-
-    public static double toRadians(double degrees) {
-        return degrees * (PI / 180.0);
-    }
-
-    public static double toDegrees(double radians) {
-        return radians * (180.0 / PI);
-    }
-
-    public static double sin(double value, boolean isDegree) {
-        if (isDegree) {
-            return sin(toRadians(value));
-        } else {
-            return sin(value);
-        }
-    }
-
-    private static native double sin(double radians);
-
-    public static double cos(double value, boolean isDegree) {
-        if (isDegree) {
-            return cos(toRadians(value));
-        } else {
-            return cos(value);
-        }
-    }
-
-    private static native double cos(double radians);
-
-    public static double tan(double value, boolean isDegree) {
-        if (isDegree) {
-            return tan(toRadians(value));
-        } else {
-            return tan(value);
-        }
-    }
-
-    private static double tan(double radians) {
-        return sin(radians) / cos(radians);
-    }
 
     public static native double exp(double x);
 
@@ -129,9 +105,89 @@ public class Mathx {
     public static double log(double x, double base) {
         return ln(x) / ln(base);
     }
-    public static native double stdDev(double[] values);
+
+    public static final class Geo {
+        static{
+            loadNativeLibrary();
+        }
+        private Geo() {
+            // Private constructor to prevent instantiation
+        }
+        public static double toRadians(double degrees) {
+            return degrees * (PI / 180.0);
+        }
+
+        public static double toDegrees(double radians) {
+            return radians * (180.0 / PI);
+        }
+
+        public static double sin(double value, boolean isDegree) {
+            if (isDegree) {
+                return sin(toRadians(value));
+            } else {
+                return sin(value);
+            }
+        }
+
+        private static native double sin(double radians);
+
+        public static double cos(double value, boolean isDegree) {
+            if (isDegree) {
+                return cos(toRadians(value));
+            } else {
+                return cos(value);
+            }
+        }
+
+        private static native double cos(double radians);
+
+        public static double tan(double value, boolean isDegree) {
+            if (isDegree) {
+                return tan(toRadians(value));
+            } else {
+                return tan(value);
+            }
+        }
+
+        private static double tan(double radians) {
+            return sin(radians) / cos(radians);
+        }
+    }
+
+    public static final class Stats {
+        static{
+            loadNativeLibrary();
+        }
+        private Stats() {
+            // Private constructor to prevent instantiation
+        }
+        public static native double mean(double[] values);
+
+        public static native double mean(int[] values);
+
+        public static native double mean(long[] values);
+
+        public static native double mean(float[] values);
+
+        public static native double stdDev(double[] values);
+
+        public static native double stdDev(int[] values);
+
+        public static native double stdDev(long[] values);
+
+        public static native double stdDev(float[] values);
+    }
+
+    private static void loadNativeLibrary(){
+        try {
+            System.loadLibrary("mathx");
+        } catch (UnsatisfiedLinkError e) {
+            throw new RuntimeException(e + "Native library 'mathx' could not be loaded. Make sure it is in the library path.");
+        }
+    }
 }
-class Test{
+
+class Test {
     public static void main(String[] args) {
         System.out.println("Welcome to Mathx Library!");
     }

@@ -15,19 +15,52 @@ extern "C" {
 #define Mathx_LN10 2.302585092994046
 /*
  * Class:     Mathx
- * Method:    stdDev
- * Signature: ([D)D
+ * Method:    factorial
+ * Signature: (I)D
  */
-JNIEXPORT jdouble JNICALL Java_Mathx_stdDev(JNIEnv *, jclass, jdoubleArray);
-JNIEXPORT jdouble JNICALL Java_Mathx_cos(JNIEnv *, jclass, jdouble);
-JNIEXPORT jdouble JNICALL Java_Mathx_sin(JNIEnv *, jclass, jdouble);
-JNIEXPORT jdouble JNICALL Java_Mathx_sqrt(JNIEnv *, jclass, jdouble);
-JNIEXPORT jdouble JNICALL Java_Mathx_power(JNIEnv *, jclass, jdouble, jint);
-JNIEXPORT jdouble JNICALL Java_Mathx_factorial(JNIEnv *, jclass, jint);
-JNIEXPORT jdouble JNICALL Java_Mathx_exp(JNIEnv *, jclass, jdouble);
-JNIEXPORT jdouble JNICALL Java_Mathx_ln(JNIEnv *, jclass, jdouble);
-JNIEXPORT jdouble JNICALL Java_Mathx_pi(JNIEnv *, jclass, jint);
-JNIEXPORT jdouble JNICALL Java_Mathx_euler(JNIEnv *env, jclass clazz, jint n);
+JNIEXPORT jdouble JNICALL Java_Mathx_factorial
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     Mathx
+ * Method:    euler
+ * Signature: (I)D
+ */
+JNIEXPORT jdouble JNICALL Java_Mathx_euler
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     Mathx
+ * Method:    pi
+ * Signature: (I)D
+ */
+JNIEXPORT jdouble JNICALL Java_Mathx_pi
+  (JNIEnv *, jclass, jint);
+
+/*
+ * Class:     Mathx
+ * Method:    sqrt
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_Mathx_sqrt
+  (JNIEnv *, jclass, jdouble);
+
+/*
+ * Class:     Mathx
+ * Method:    exp
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_Mathx_exp
+  (JNIEnv *, jclass, jdouble);
+
+/*
+ * Class:     Mathx
+ * Method:    ln
+ * Signature: (D)D
+ */
+JNIEXPORT jdouble JNICALL Java_Mathx_ln
+  (JNIEnv *, jclass, jdouble);
+
 #ifdef __cplusplus
 }
 #endif
