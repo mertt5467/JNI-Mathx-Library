@@ -11,7 +11,7 @@ echo "1/3: Compiling Java..."
 javac -d ./bin ./src/Mathx.java
 
 echo "2/3: Compiling C++ library..."
-g++ -O3 -march=native -shared -fPIC -I"$JAVA_INC" -I"$JAVA_INC_LINUX" ./src/Mathx.cpp -o ./bin/libmathx.so
+g++ -O3 -march=native -fopenmp-simd -shared -fPIC -I"$JAVA_INC" -I"$JAVA_INC_LINUX" ./src/Mathx.cpp -o ./bin/libmathx.so
 
 if [ $? -eq 0 ]; then
     echo "3/3: Running program..."

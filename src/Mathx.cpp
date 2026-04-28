@@ -165,6 +165,7 @@ namespace kernel::stats{
             return NAN;
         }
         double sum = 0;
+        #pragma omp simd reduction(+:sum)
         for (int i = 0; i < len; i++) sum += (double)arr[i];
         return sum / len;
     }
